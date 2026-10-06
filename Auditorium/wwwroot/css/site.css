@@ -2,7 +2,8 @@ html {
   font-size: 14px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px)
+{
   html {
     font-size: 16px;
   }
@@ -28,4 +29,24 @@ body {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
+}
+
+.label__kids {
+    display: block;
+    position: relative;
+    /*top: -192px;
+    left: 320px;*/
+    width: 32px;
+    height: 32px;
+    
+}
+
+.unselected 
+{
+    background: url('../images/free.jpg');
+}
+
+.selected
+{
+    background: url('../images/occupied.jpg');
 }
