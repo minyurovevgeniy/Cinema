@@ -31,6 +31,11 @@ body {
   text-align: start;
 }
 
+.input__kids
+{
+    display:block;
+}
+
 .label__kids {
     display: block;
     position: relative;
@@ -38,7 +43,6 @@ body {
     left: 320px;*/
     width: 32px;
     height: 32px;
-    
 }
 
 .unselected 

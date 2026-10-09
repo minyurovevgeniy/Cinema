@@ -1,4 +1,4 @@
-namespace Auditorium.Models
+namespace AuditoriumManagement.Models
 {
     public class ErrorViewModel
     {
