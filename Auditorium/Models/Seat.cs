@@ -9,12 +9,18 @@ namespace AuditoriumManagement.Models
         {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Cinema;Username=postgres;Password=admin");
+        }
+
         public DbSet<Seat> Seats { get; set; }
         public DbSet<Auditorium> Auditoriums { get; set; }
     }
 
     public class Seat : Entity
     {
+        public int AuditoriumId { get; set; }
         public Auditorium Auditorium { get; set; }
         public int Row {  get; set; }
         public int Place {  get; set; }

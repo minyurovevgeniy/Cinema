@@ -1,5 +1,6 @@
 using AuditoriumManagement.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace AuditoriumManagement.Controllers
@@ -33,7 +34,25 @@ namespace AuditoriumManagement.Controllers
         [HttpPost]
         public IActionResult ChooseSeat(string seat)
         {
-            string mySeat = seat;
+            ApplicationDbContext db = new ApplicationDbContext(new DbContextOptions<ApplicationDbContext>());
+            int row = int.Parse(seat.Split('_')[0]);
+            int place = int.Parse(seat.Split('_')[1]);
+
+            Auditorium room = new Auditorium();
+            room.AuditoriumNumber = 2;
+
+            Seat seatToAdd = new Seat();
+
+            seatToAdd.Row = row;
+            seatToAdd.Place = place;
+
+            seatToAdd.Auditorium = room;
+
+            db.Auditoriums.Add(room);
+            db.Seats.Add(seatToAdd);
+
+            db.SaveChanges();
+
             return ChooseSeat();
         }
     }
