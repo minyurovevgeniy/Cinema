@@ -1,7 +1,9 @@
 using AuditoriumManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Text.Json.Serialization;
 
 namespace AuditoriumManagement.Controllers
 {
@@ -55,5 +57,21 @@ namespace AuditoriumManagement.Controllers
 
             return ChooseSeat();
         }
+
+        [HttpGet]
+        public ActionResult<Auditorium> GetSeats()
+        {
+            ApplicationDbContext db = new ApplicationDbContext(new DbContextOptions<ApplicationDbContext>());
+
+            int rowsCount = db.Auditoriums.Where(a => a.Id == 1).FirstOrDefault<Auditorium>().RowsCount;
+            int seatsCount = db.Auditoriums.Where(a => a.Id == 1).FirstOrDefault<Auditorium>().PlacesCount;
+
+            List<Auditorium> auditoriums = db.Auditoriums.Where(a => a.Id == 1).ToList<Auditorium>();
+
+            //var jsonUser = "{\"response:\"" +JsonConvert.SerializeObject(auditoriums)+"}";
+            //var jsonUser = "{\"response\":"+JsonConvert.SerializeObject(auditoriums, Formatting.Indented)+"}";
+            return Ok(auditoriums);
+        }
+
     }
 }
