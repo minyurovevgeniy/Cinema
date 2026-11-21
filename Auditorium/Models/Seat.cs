@@ -29,5 +29,7 @@ namespace AuditoriumManagement.Models
     public class Auditorium : Entity
     {
         public int AuditoriumNumber { get; set; }
+        public int RowsCount { get; set; }
+        public int PlacesCount { get; set; }
     }
 }

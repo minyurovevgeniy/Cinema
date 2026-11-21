@@ -32,6 +32,12 @@ namespace AuditoriumManagement.Migrations
                     b.Property<int>("AuditoriumNumber")
                         .HasColumnType("integer");
 
+                    b.Property<int>("PlacesCount")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("RowsCount")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.ToTable("Auditoriums");
